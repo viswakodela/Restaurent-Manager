@@ -32,4 +32,6 @@ struct Business: Decodable {
     var is_closed: Bool?
     var phone: String?
     var location: Location?
+    var price: String?
+    var distance: Float?
 }

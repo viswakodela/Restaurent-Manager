@@ -10,6 +10,14 @@ import UIKit
 
 class RestaurentsCell: UICollectionViewCell {
     
+    var restaurents: [Business]? {
+        didSet {
+            guard let businesses = self.restaurents else {return}
+            horizontalCollectionView.businesses = businesses
+            horizontalCollectionView.collectionView.reloadData()
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupLayout()
@@ -18,7 +26,7 @@ class RestaurentsCell: UICollectionViewCell {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "This is the Header"
+        label.text = "Near to you"
         label.font = UIFont.boldSystemFont(ofSize: 24)
         return label
     }()
@@ -41,11 +49,19 @@ class RestaurentsCell: UICollectionViewCell {
         collectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -5).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5).isActive = true
         
+        let seperatorView = UIView()
+        seperatorView.backgroundColor = .gray
+        seperatorView.translatesAutoresizingMaskIntoConstraints = false
+        
+        addSubview(seperatorView)
+        seperatorView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        seperatorView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8).isActive = true
+        seperatorView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8).isActive = true
+        seperatorView.heightAnchor.constraint(equalToConstant: 0.3).isActive = true
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
 }
+

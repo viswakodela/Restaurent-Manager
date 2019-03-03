@@ -13,15 +13,13 @@ import Alamofire
 
 class BaseViewController: UICollectionViewController {
     
-    
     private static let restaurentCellId = "restaurentCellId"
     private static let headerCellID = "headerCellID"
     
     var locationManager: CLLocationManager?
     var currentLocation: CLLocationCoordinate2D?
-    private let appKey = "0XAQ_rCntdHlMH_Xr3PI_ogYCwus-iQS_076dy1KucqWW6RR7WKdFICk-i3YYsu2APA3Zy6yWYAYh71auoDzvYygDu1b2yOHJTJPGUTOB6nU2TNhRUBZ_T0qNbl6XHYx"
-    var restaurents = [Business]()
     
+    var restaurents = [Business]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,39 +58,21 @@ class BaseViewController: UICollectionViewController {
     }
     
     func searchByLocation() {
-        view.backgroundColor = .white
-        collectionView.backgroundColor = .white
-        let geoCoder = CLGeocoder()
-        guard let currentLocation = self.currentLocation else {return}
-        let location = CLLocation(latitude: currentLocation.latitude, longitude: currentLocation.longitude)
         
-        geoCoder.reverseGeocodeLocation(location) { [weak self](placemarks, err) in
-            let presentLocation = placemarks?.first?.name
-            
-            let parameters = ["term": "restaurants", "location": presentLocation ?? ""] as Parameters
-            let header: HTTPHeaders = ["Authorization": "Bearer \(self?.appKey ?? "")"]
-            
-            let url = "https://api.yelp.com/v3/businesses/search"
-            Alamofire.request(url, method: .get, parameters: parameters , encoding: URLEncoding.default, headers: header).responseData(completionHandler: { (dataResponse) in
-                guard let data = dataResponse.data else {return}
-                
-                let result = try? JSONDecoder().decode(Feed.self, from: data)
-                guard let restaurents = result?.businesses else {return}
-                self?.restaurents = restaurents
-                DispatchQueue.main.async {
-                    self?.collectionView.reloadData()
-                }
-            })
+        APIService.shared.nearByLocation(location: self.currentLocation) { [weak self](businesses) in
+            self?.restaurents = businesses
+            DispatchQueue.main.async {
+                self?.collectionView.reloadData()
+            }
         }
     }
     
     func setupLayout() {
+        collectionView.backgroundColor = .white
         collectionView.alwaysBounceVertical = true
         collectionView.register(HeaderViewCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: BaseViewController.headerCellID)
         collectionView.register(RestaurentsCell.self, forCellWithReuseIdentifier: BaseViewController.restaurentCellId)
     }
-    
-    
 }
 
 extension BaseViewController: CLLocationManagerDelegate {
@@ -115,13 +95,13 @@ extension BaseViewController: UICollectionViewDelegateFlowLayout {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BaseViewController.restaurentCellId, for: indexPath) as! RestaurentsCell
-        cell.backgroundColor = .red
+        cell.restaurents = self.restaurents
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = (view.frame.width)
-        return CGSize(width: width, height: 200)
+        return CGSize(width: width, height: 230)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {

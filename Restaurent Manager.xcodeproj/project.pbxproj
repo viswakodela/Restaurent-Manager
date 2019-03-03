@@ -14,6 +14,7 @@
 		BDE43870222C3CCD00636662 /* HorizontalCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE4386F222C3CCD00636662 /* HorizontalCollectionController.swift */; };
 		BDE43872222C3CF900636662 /* BaseCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE43871222C3CF900636662 /* BaseCollectionView.swift */; };
 		BDE43874222C456600636662 /* HeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE43873222C456600636662 /* HeaderViewCell.swift */; };
+		BDE43876222C51E300636662 /* HorizontalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE43875222C51E300636662 /* HorizontalCell.swift */; };
 		BDF16477222AFF6A00A99200 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF16476222AFF6A00A99200 /* AppDelegate.swift */; };
 		BDF1647C222AFF6A00A99200 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDF1647A222AFF6A00A99200 /* Main.storyboard */; };
 		BDF1647E222AFF6C00A99200 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDF1647D222AFF6C00A99200 /* Assets.xcassets */; };
@@ -31,6 +32,7 @@
 		BDE4386F222C3CCD00636662 /* HorizontalCollectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCollectionController.swift; sourceTree = "<group>"; };
 		BDE43871222C3CF900636662 /* BaseCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionView.swift; sourceTree = "<group>"; };
 		BDE43873222C456600636662 /* HeaderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewCell.swift; sourceTree = "<group>"; };
+		BDE43875222C51E300636662 /* HorizontalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCell.swift; sourceTree = "<group>"; };
 		BDF16473222AFF6A00A99200 /* Restaurent Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Restaurent Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDF16476222AFF6A00A99200 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BDF1647B222AFF6A00A99200 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 			children = (
 				BDE4386D222B7AD700636662 /* RestaurentsCell.swift */,
 				BDE43873222C456600636662 /* HeaderViewCell.swift */,
+				BDE43875222C51E300636662 /* HorizontalCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -89,6 +92,7 @@
 		BDF1646A222AFF6A00A99200 = {
 			isa = PBXGroup;
 			children = (
+				BDF16476222AFF6A00A99200 /* AppDelegate.swift */,
 				BDF16475222AFF6A00A99200 /* Restaurent Manager */,
 				BDF16474222AFF6A00A99200 /* Products */,
 				472A6C7C8F5A23AE41DF1C77 /* Pods */,
@@ -112,7 +116,6 @@
 				BDF16488222AFF8200A99200 /* Model */,
 				BDE4386C222B7AC200636662 /* View */,
 				BDF1648B222B146500A99200 /* Controller */,
-				BDF16476222AFF6A00A99200 /* AppDelegate.swift */,
 				BDF1647A222AFF6A00A99200 /* Main.storyboard */,
 				BDF1647D222AFF6C00A99200 /* Assets.xcassets */,
 				BDF1647F222AFF6C00A99200 /* LaunchScreen.storyboard */,
@@ -218,6 +221,7 @@
 				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/CDYelpFusionKit/CDYelpFusionKit.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -225,6 +229,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CDYelpFusionKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -258,6 +263,7 @@
 			files = (
 				BDE43872222C3CF900636662 /* BaseCollectionView.swift in Sources */,
 				BDF1648A222AFF9A00A99200 /* Business.swift in Sources */,
+				BDE43876222C51E300636662 /* HorizontalCell.swift in Sources */,
 				BDE43870222C3CCD00636662 /* HorizontalCollectionController.swift in Sources */,
 				BDE43874222C456600636662 /* HeaderViewCell.swift in Sources */,
 				BDE4386E222B7AD700636662 /* RestaurentsCell.swift in Sources */,
