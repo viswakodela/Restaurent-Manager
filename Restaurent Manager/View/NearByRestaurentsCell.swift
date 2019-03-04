@@ -9,7 +9,7 @@
 import UIKit
 import SDWebImage
 
-class HorizontalCell: UICollectionViewCell {
+class NearByRestaurentsCell: UICollectionViewCell {
     
     var restaurent: Business? {
         didSet {
@@ -23,6 +23,30 @@ class HorizontalCell: UICollectionViewCell {
                 isOpenLabel.attributedText = NSMutableAttributedString(string: "Open", attributes: [NSAttributedString.Key.foregroundColor : #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)])
             } else {
                 isOpenLabel.attributedText = NSMutableAttributedString(string: "Closed", attributes: [NSAttributedString.Key.foregroundColor : #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)])
+            }
+            
+            if restaurent?.rating == 0 {
+                ratingsImageView.image = UIImage(named: "large_0")
+            } else if restaurent?.rating == 0.5 {
+                ratingsImageView.image = #imageLiteral(resourceName: "yelp_stars_one_small")
+            } else if restaurent?.rating == 1 {
+                ratingsImageView.image = UIImage(named: "large_1")
+            } else  if restaurent?.rating == 1.5 {
+                ratingsImageView.image = UIImage(named: "large_1_half")
+            } else  if restaurent?.rating == 2 {
+                ratingsImageView.image = UIImage(named: "large_2")
+            } else  if restaurent?.rating == 2.5 {
+                ratingsImageView.image = UIImage(named: "large_2_half")
+            } else  if restaurent?.rating == 3 {
+                ratingsImageView.image = UIImage(named: "large_3")
+            } else  if restaurent?.rating == 3.5 {
+                ratingsImageView.image = UIImage(named: "large_3_half")
+            } else  if restaurent?.rating == 4 {
+                ratingsImageView.image = UIImage(named: "large_4")
+            } else  if restaurent?.rating == 4.5 {
+                ratingsImageView.image = UIImage(named: "large_4_half")
+            } else {
+                ratingsImageView.image = UIImage(named: "large_5")
             }
             
             guard let distance = restaurent?.distance else {return}
@@ -68,8 +92,7 @@ class HorizontalCell: UICollectionViewCell {
     let locationlabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .lightGray
-        label.text = "Hello"
+        label.textColor = .gray
         return label
     }()
     
@@ -88,10 +111,17 @@ class HorizontalCell: UICollectionViewCell {
         return label
     }()
     
+    let ratingsImageView: UIImageView = {
+        let iv = UIImageView()
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        iv.contentMode = .scaleAspectFit
+        return iv
+    }()
+    
     func setupLayout() {
         
         layer.shadowOffset = CGSize(width: 0, height: 0)
-        layer.shadowColor = UIColor.lightGray.cgColor
+        layer.shadowColor = UIColor.gray.cgColor
         layer.shadowOpacity = 0.4
         layer.shadowRadius = 4
         
@@ -114,10 +144,16 @@ class HorizontalCell: UICollectionViewCell {
         horizontalStackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         horizontalStackView.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
+        addSubview(ratingsImageView)
+        ratingsImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -5).isActive = true
+        ratingsImageView.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        ratingsImageView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        ratingsImageView.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        
         addSubview(restaurentName)
         restaurentName.topAnchor.constraint(equalTo: horizontalStackView.bottomAnchor).isActive = true
         restaurentName.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        restaurentName.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        restaurentName.trailingAnchor.constraint(equalTo: ratingsImageView.leadingAnchor).isActive = true
         restaurentName.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 1).isActive = true
         
     }

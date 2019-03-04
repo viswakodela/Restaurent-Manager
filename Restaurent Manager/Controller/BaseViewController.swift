@@ -15,11 +15,12 @@ class BaseViewController: UICollectionViewController {
     
     private static let restaurentCellId = "restaurentCellId"
     private static let headerCellID = "headerCellID"
+    private static let secondHorizontalCellID = "secondHorizontalCellID"
     
     var locationManager: CLLocationManager?
     var currentLocation: CLLocationCoordinate2D?
     
-    var restaurents = [Business]()
+    var restaurents = [[Business]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,11 +60,22 @@ class BaseViewController: UICollectionViewController {
     
     func searchByLocation() {
         
-        APIService.shared.nearByLocation(location: self.currentLocation) { [weak self](businesses) in
-            self?.restaurents = businesses
-            DispatchQueue.main.async {
-                self?.collectionView.reloadData()
-            }
+        let dispatchGroup = DispatchGroup()
+        
+        dispatchGroup.enter()
+        APIService.shared.nearByLocation(location: self.currentLocation) { [weak self] (businesses) in
+            dispatchGroup.leave()
+            self?.restaurents.append(businesses)
+        }
+        
+        dispatchGroup.enter()
+        APIService.shared.allRestaurentsInTheCity(location: self.currentLocation) { [weak self] (businesses) in
+            dispatchGroup.leave()
+            self?.restaurents.append(businesses)
+        }
+        
+        dispatchGroup.notify(queue: .main) {
+            self.collectionView.reloadData()
         }
     }
     
@@ -72,6 +84,7 @@ class BaseViewController: UICollectionViewController {
         collectionView.alwaysBounceVertical = true
         collectionView.register(HeaderViewCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: BaseViewController.headerCellID)
         collectionView.register(RestaurentsCell.self, forCellWithReuseIdentifier: BaseViewController.restaurentCellId)
+        collectionView.register(SecondHorizontalCell.self, forCellWithReuseIdentifier: BaseViewController.secondHorizontalCellID)
     }
 }
 
@@ -90,18 +103,31 @@ extension BaseViewController: CLLocationManagerDelegate {
 extension BaseViewController: UICollectionViewDelegateFlowLayout {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return restaurents.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BaseViewController.restaurentCellId, for: indexPath) as! RestaurentsCell
-        cell.restaurents = self.restaurents
-        return cell
+        
+        if indexPath.item == 0 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BaseViewController.restaurentCellId, for: indexPath) as! RestaurentsCell
+            cell.restaurents = self.restaurents[indexPath.item]
+            return cell
+        } else {
+            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BaseViewController.secondHorizontalCellID, for: indexPath) as! SecondHorizontalCell
+            cell.businesses = self.restaurents[indexPath.item]
+            return cell
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = (view.frame.width)
-        return CGSize(width: width, height: 230)
+        
+        if indexPath.item == 0 {
+            return CGSize(width: width, height: 230)
+        } else {
+            return CGSize(width: width, height: 300)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {

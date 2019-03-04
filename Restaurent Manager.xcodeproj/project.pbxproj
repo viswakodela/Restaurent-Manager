@@ -8,13 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		5233E3A165DD87425CD87E00 /* Pods_Restaurent_Manager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A051A1D49045F4023A30391 /* Pods_Restaurent_Manager.framework */; };
+		BD1A9F39222C9C46001A6861 /* SecondHorizontalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1A9F38222C9C46001A6861 /* SecondHorizontalCell.swift */; };
+		BD1A9F3B222C9E3D001A6861 /* SecondHorizontalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1A9F3A222C9E3D001A6861 /* SecondHorizontalController.swift */; };
+		BD1A9F3D222CA7DC001A6861 /* AllRestaurentsInCityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1A9F3C222CA7DC001A6861 /* AllRestaurentsInCityCell.swift */; };
 		BDE43868222B164100636662 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE43867222B164100636662 /* BaseViewController.swift */; };
 		BDE4386B222B25C100636662 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE4386A222B25C100636662 /* APIService.swift */; };
 		BDE4386E222B7AD700636662 /* RestaurentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE4386D222B7AD700636662 /* RestaurentsCell.swift */; };
 		BDE43870222C3CCD00636662 /* HorizontalCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE4386F222C3CCD00636662 /* HorizontalCollectionController.swift */; };
 		BDE43872222C3CF900636662 /* BaseCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE43871222C3CF900636662 /* BaseCollectionView.swift */; };
 		BDE43874222C456600636662 /* HeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE43873222C456600636662 /* HeaderViewCell.swift */; };
-		BDE43876222C51E300636662 /* HorizontalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE43875222C51E300636662 /* HorizontalCell.swift */; };
+		BDE43876222C51E300636662 /* NearByRestaurentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE43875222C51E300636662 /* NearByRestaurentsCell.swift */; };
 		BDF16477222AFF6A00A99200 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF16476222AFF6A00A99200 /* AppDelegate.swift */; };
 		BDF1647C222AFF6A00A99200 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDF1647A222AFF6A00A99200 /* Main.storyboard */; };
 		BDF1647E222AFF6C00A99200 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDF1647D222AFF6C00A99200 /* Assets.xcassets */; };
@@ -26,13 +29,16 @@
 		301D2EF8F9AD42DEAD1968FB /* Pods-Restaurent Manager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Restaurent Manager.release.xcconfig"; path = "Pods/Target Support Files/Pods-Restaurent Manager/Pods-Restaurent Manager.release.xcconfig"; sourceTree = "<group>"; };
 		6A051A1D49045F4023A30391 /* Pods_Restaurent_Manager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Restaurent_Manager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E945733C14204020CC026EC /* Pods-Restaurent Manager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Restaurent Manager.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Restaurent Manager/Pods-Restaurent Manager.debug.xcconfig"; sourceTree = "<group>"; };
+		BD1A9F38222C9C46001A6861 /* SecondHorizontalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondHorizontalCell.swift; sourceTree = "<group>"; };
+		BD1A9F3A222C9E3D001A6861 /* SecondHorizontalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondHorizontalController.swift; sourceTree = "<group>"; };
+		BD1A9F3C222CA7DC001A6861 /* AllRestaurentsInCityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRestaurentsInCityCell.swift; sourceTree = "<group>"; };
 		BDE43867222B164100636662 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		BDE4386A222B25C100636662 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		BDE4386D222B7AD700636662 /* RestaurentsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurentsCell.swift; sourceTree = "<group>"; };
 		BDE4386F222C3CCD00636662 /* HorizontalCollectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCollectionController.swift; sourceTree = "<group>"; };
 		BDE43871222C3CF900636662 /* BaseCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionView.swift; sourceTree = "<group>"; };
 		BDE43873222C456600636662 /* HeaderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewCell.swift; sourceTree = "<group>"; };
-		BDE43875222C51E300636662 /* HorizontalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCell.swift; sourceTree = "<group>"; };
+		BDE43875222C51E300636662 /* NearByRestaurentsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearByRestaurentsCell.swift; sourceTree = "<group>"; };
 		BDF16473222AFF6A00A99200 /* Restaurent Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Restaurent Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDF16476222AFF6A00A99200 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BDF1647B222AFF6A00A99200 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -82,9 +88,11 @@
 		BDE4386C222B7AC200636662 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				BDE4386D222B7AD700636662 /* RestaurentsCell.swift */,
 				BDE43873222C456600636662 /* HeaderViewCell.swift */,
-				BDE43875222C51E300636662 /* HorizontalCell.swift */,
+				BDE4386D222B7AD700636662 /* RestaurentsCell.swift */,
+				BDE43875222C51E300636662 /* NearByRestaurentsCell.swift */,
+				BD1A9F38222C9C46001A6861 /* SecondHorizontalCell.swift */,
+				BD1A9F3C222CA7DC001A6861 /* AllRestaurentsInCityCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -137,6 +145,7 @@
 			children = (
 				BDE43867222B164100636662 /* BaseViewController.swift */,
 				BDE4386F222C3CCD00636662 /* HorizontalCollectionController.swift */,
+				BD1A9F3A222C9E3D001A6861 /* SecondHorizontalController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -263,13 +272,16 @@
 			files = (
 				BDE43872222C3CF900636662 /* BaseCollectionView.swift in Sources */,
 				BDF1648A222AFF9A00A99200 /* Business.swift in Sources */,
-				BDE43876222C51E300636662 /* HorizontalCell.swift in Sources */,
+				BD1A9F3D222CA7DC001A6861 /* AllRestaurentsInCityCell.swift in Sources */,
+				BDE43876222C51E300636662 /* NearByRestaurentsCell.swift in Sources */,
 				BDE43870222C3CCD00636662 /* HorizontalCollectionController.swift in Sources */,
+				BD1A9F3B222C9E3D001A6861 /* SecondHorizontalController.swift in Sources */,
 				BDE43874222C456600636662 /* HeaderViewCell.swift in Sources */,
 				BDE4386E222B7AD700636662 /* RestaurentsCell.swift in Sources */,
 				BDE43868222B164100636662 /* BaseViewController.swift in Sources */,
 				BDE4386B222B25C100636662 /* APIService.swift in Sources */,
 				BDF16477222AFF6A00A99200 /* AppDelegate.swift in Sources */,
+				BD1A9F39222C9C46001A6861 /* SecondHorizontalCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

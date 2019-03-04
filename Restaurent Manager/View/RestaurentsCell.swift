@@ -57,7 +57,7 @@ class RestaurentsCell: UICollectionViewCell {
         seperatorView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         seperatorView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8).isActive = true
         seperatorView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8).isActive = true
-        seperatorView.heightAnchor.constraint(equalToConstant: 0.3).isActive = true
+        seperatorView.heightAnchor.constraint(equalToConstant: 0.2).isActive = true
     }
     
     required init?(coder aDecoder: NSCoder) {

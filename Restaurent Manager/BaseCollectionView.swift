@@ -11,9 +11,10 @@ import UIKit
 class BaseCollectionView: UICollectionViewController {
     
     init() {
-        let layout = UICollectionViewFlowLayout()
+        let layout = SnappingFlowLayout()
         layout.scrollDirection = .horizontal
         super.init(collectionViewLayout: layout)
+        collectionView.decelerationRate = .fast
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -29,7 +30,7 @@ class SnappingFlowLayout: UICollectionViewFlowLayout {
         guard let collectionView = collectionView else { return super.targetContentOffset(forProposedContentOffset: proposedContentOffset, withScrollingVelocity: velocity) }
         let parent = super.targetContentOffset(forProposedContentOffset: proposedContentOffset, withScrollingVelocity: velocity)
         
-        let itemWidth = collectionView.frame.width - 64
+        let itemWidth = collectionView.frame.width - 140
         let itemSpace = itemWidth + minimumInteritemSpacing
         var currentItemIdx = round(collectionView.contentOffset.x / itemSpace)
         
