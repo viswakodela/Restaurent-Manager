@@ -24,7 +24,7 @@ class HorizontalCollectionController: BaseCollectionView {
 extension HorizontalCollectionController: UICollectionViewDelegateFlowLayout {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return businesses.count
+        return min(10,businesses.count)
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -44,8 +44,6 @@ extension HorizontalCollectionController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let height = view.frame.height - 10
-        let width = height
-        return CGSize(width: width * 1.5, height: height)
+        return CGSize(width: view.frame.width - 100, height: height)
     }
-    
 }

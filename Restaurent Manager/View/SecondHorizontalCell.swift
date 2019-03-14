@@ -16,6 +16,9 @@ class SecondHorizontalCell: UICollectionViewCell {
         didSet {
             guard let location = businesses?.first?.location?.city else {return}
             titleLabel.text = "Restaurents in \(location)"
+            guard let businesses = businesses else {return}
+            secondHorizontalCollectionView.businesses = businesses
+            secondHorizontalCollectionView.collectionView.reloadData()
         }
     }
     
@@ -27,17 +30,30 @@ class SecondHorizontalCell: UICollectionViewCell {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Restaurents in your City"
-        label.font = UIFont.boldSystemFont(ofSize: 24)
+        label.font = UIFont.boldSystemFont(ofSize: 20)
         return label
+    }()
+    
+    let seeAllButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("SeeAll", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+        return button
     }()
     
     func setupLayout() {
         
         addSubview(titleLabel)
         titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 8).isActive = true
-        titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5).isActive = true
+        titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
         titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        
+        addSubview(seeAllButton)
+        seeAllButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -5).isActive = true
+        seeAllButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        seeAllButton.topAnchor.constraint(equalTo: topAnchor, constant: 5).isActive = true
+        seeAllButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
         guard let collectionView = secondHorizontalCollectionView.view else {return}
         collectionView.translatesAutoresizingMaskIntoConstraints = false

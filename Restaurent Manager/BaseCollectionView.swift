@@ -30,7 +30,7 @@ class SnappingFlowLayout: UICollectionViewFlowLayout {
         guard let collectionView = collectionView else { return super.targetContentOffset(forProposedContentOffset: proposedContentOffset, withScrollingVelocity: velocity) }
         let parent = super.targetContentOffset(forProposedContentOffset: proposedContentOffset, withScrollingVelocity: velocity)
         
-        let itemWidth = collectionView.frame.width - 140
+        let itemWidth = collectionView.frame.width - 100
         let itemSpace = itemWidth + minimumInteritemSpacing
         var currentItemIdx = round(collectionView.contentOffset.x / itemSpace)
         

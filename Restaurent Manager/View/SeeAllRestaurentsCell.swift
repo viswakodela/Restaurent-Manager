@@ -1,24 +1,21 @@
 //
-//  HorizontalCell.swift
+//  SeeAllRestaurentsCell.swift
 //  Restaurent Manager
 //
-//  Created by Viswa Kodela on 3/3/19.
+//  Created by Viswa Kodela on 3/13/19.
 //  Copyright © 2019 Viswa Kodela. All rights reserved.
 //
 
 import UIKit
-import SDWebImage
 
-class NearByRestaurentsCell: UICollectionViewCell {
+class SeeAllRestaurentsCell: UICollectionViewCell {
     
-    var restaurent: Business? {
+    var business: Business? {
         didSet {
-            guard let imgeUrl = restaurent?.image_url, let url = URL(string: imgeUrl) else {return}
+            restaurentName.text = business?.name
+            guard let imageString = business?.image_url, let url = URL(string: imageString) else {return}
             restaurentImage.sd_setImage(with: url)
-            priceLabel.text = restaurent?.price ?? "N/A"
-            
-            restaurentName.text = restaurent?.name
-            if restaurent?.is_closed == true {
+            if business?.is_closed == true {
                 let attributedText = NSMutableAttributedString(string: "close", attributes: [NSAttributedString.Key.foregroundColor : #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)])
                 isOpenLabel.attributedText = attributedText
                 
@@ -27,31 +24,32 @@ class NearByRestaurentsCell: UICollectionViewCell {
                 isOpenLabel.attributedText = attributedText
             }
             
-            if restaurent?.rating == 0 {
+            
+            if business?.rating == 0 {
                 ratingsImageView.image = UIImage(named: "large_0")
-            } else if restaurent?.rating == 0.5 {
+            } else if business?.rating == 0.5 {
                 ratingsImageView.image = #imageLiteral(resourceName: "yelp_stars_one_small")
-            } else if restaurent?.rating == 1 {
+            } else if business?.rating == 1 {
                 ratingsImageView.image = UIImage(named: "large_1")
-            } else  if restaurent?.rating == 1.5 {
+            } else  if business?.rating == 1.5 {
                 ratingsImageView.image = UIImage(named: "large_1_half")
-            } else  if restaurent?.rating == 2 {
+            } else  if business?.rating == 2 {
                 ratingsImageView.image = UIImage(named: "large_2")
-            } else  if restaurent?.rating == 2.5 {
+            } else  if business?.rating == 2.5 {
                 ratingsImageView.image = UIImage(named: "large_2_half")
-            } else  if restaurent?.rating == 3 {
+            } else  if business?.rating == 3 {
                 ratingsImageView.image = UIImage(named: "large_3")
-            } else  if restaurent?.rating == 3.5 {
+            } else  if business?.rating == 3.5 {
                 ratingsImageView.image = UIImage(named: "large_3_half")
-            } else  if restaurent?.rating == 4 {
+            } else  if business?.rating == 4 {
                 ratingsImageView.image = UIImage(named: "large_4")
-            } else  if restaurent?.rating == 4.5 {
+            } else  if business?.rating == 4.5 {
                 ratingsImageView.image = UIImage(named: "large_4_half")
             } else {
                 ratingsImageView.image = UIImage(named: "large_5")
             }
             
-            guard let distance = restaurent?.distance else {return}
+            guard let distance = business?.distance else {return}
             let distanceInKM = distance * 0.001
             let distanceString = String(format: "%.2f", distanceInKM)
             locationlabel.text = "\(distanceString)km"
@@ -60,6 +58,8 @@ class NearByRestaurentsCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        backgroundColor = .white
+        layer.cornerRadius = 16
         setupLayout()
     }
     
@@ -76,7 +76,7 @@ class NearByRestaurentsCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Open"
         label.textColor = #colorLiteral(red: 0.1960784346, green: 0.3411764801, blue: 0.1019607857, alpha: 1)
-        label.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        label.widthAnchor.constraint(equalToConstant: 50).isActive = true
         return label
     }()
     
@@ -87,7 +87,6 @@ class NearByRestaurentsCell: UICollectionViewCell {
         iv.clipsToBounds = true
         iv.image = #imageLiteral(resourceName: "maps-and-flags")
         iv.widthAnchor.constraint(equalToConstant: 20).isActive = true
-        iv.heightAnchor.constraint(equalToConstant: 20).isActive = true
         return iv
     }()
     
@@ -120,6 +119,11 @@ class NearByRestaurentsCell: UICollectionViewCell {
         return iv
     }()
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        roundCorners(corners: [.topLeft, .topRight], radius: 16)
+    }
+    
     func setupLayout() {
         
         layer.shadowOffset = CGSize(width: 0, height: 0)
@@ -127,35 +131,45 @@ class NearByRestaurentsCell: UICollectionViewCell {
         layer.shadowOpacity = 0.4
         layer.shadowRadius = 1.5
         
-        backgroundColor = .white
-        
-        addSubview(restaurentImage)
-        restaurentImage.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        restaurentImage.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        restaurentImage.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        restaurentImage.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.65).isActive = true
         
         let horizontalStackView = UIStackView(arrangedSubviews: [priceLabel, isOpenLabel, locationImageView, locationlabel, ratingsImageView])
         horizontalStackView.axis = .horizontal
         horizontalStackView.spacing = 4
-        horizontalStackView.translatesAutoresizingMaskIntoConstraints = false
         
-        addSubview(horizontalStackView)
-        horizontalStackView.topAnchor.constraint(equalTo: restaurentImage.bottomAnchor, constant: 2).isActive = true
-        horizontalStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5).isActive = true
-        horizontalStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -5).isActive = true
-        horizontalStackView.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        let overallStackView = UIStackView(arrangedSubviews: [restaurentImage, horizontalStackView, restaurentName])
+        overallStackView.translatesAutoresizingMaskIntoConstraints = false
+        overallStackView.axis = .vertical
+        overallStackView.spacing = 4
+        overallStackView.layer.cornerRadius = 16
+        overallStackView.clipsToBounds = true
         
-        addSubview(restaurentName)
-        restaurentName.topAnchor.constraint(equalTo: horizontalStackView.bottomAnchor).isActive = true
-        restaurentName.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5).isActive = true
-        restaurentName.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -5).isActive = true
-        restaurentName.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 1).isActive = true
+        horizontalStackView.leadingAnchor.constraint(equalTo: overallStackView.leadingAnchor, constant: 5).isActive = true
+        horizontalStackView.trailingAnchor.constraint(equalTo: overallStackView.trailingAnchor, constant: -5).isActive = true
+        restaurentImage.heightAnchor.constraint(equalToConstant: 130).isActive = true
+        restaurentImage.leadingAnchor.constraint(equalTo: overallStackView.leadingAnchor).isActive = true
+        restaurentName.leadingAnchor.constraint(equalTo: overallStackView.leadingAnchor, constant: 5).isActive = true
+        
+        
+        addSubview(overallStackView)
+        overallStackView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        overallStackView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        overallStackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        overallStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10).isActive = true
         
     }
+    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+}
+
+extension UIView {
+    func roundCorners(corners: UIRectCorner, radius: CGFloat) {
+        let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        let mask = CAShapeLayer()
+        mask.path = path.cgPath
+        layer.mask = mask
+    }
 }

@@ -24,6 +24,11 @@ struct Location: Decodable {
     let state: String
 }
 
+struct Categories: Decodable {
+    var alias: String?
+    var title: String?
+}
+
 struct Business: Decodable {
     let id: String
     let name: String
@@ -34,4 +39,19 @@ struct Business: Decodable {
     var location: Location?
     var price: String?
     var distance: Float?
+    var review_count: Float?
+    var categories: [Categories]?
+    var display_phone: String
+    var coordinates: Coordinates
+    
+}
+
+struct Coordinates: Decodable {
+    let latitude: Float
+    let longitude: Float
+}
+
+struct BusinessDetails: Decodable {
+    let id: String
+    let name: String
 }

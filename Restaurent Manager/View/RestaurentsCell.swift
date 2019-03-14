@@ -27,8 +27,16 @@ class RestaurentsCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Near to you"
-        label.font = UIFont.boldSystemFont(ofSize: 24)
+        label.font = UIFont.boldSystemFont(ofSize: 20)
         return label
+    }()
+    
+    let seeAllButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("SeeAll", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+        return button
     }()
     
     let horizontalCollectionView = HorizontalCollectionController()
@@ -40,8 +48,16 @@ class RestaurentsCell: UICollectionViewCell {
         
         addSubview(titleLabel)
         titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 5).isActive = true
-        titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5).isActive = true
+        titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
         titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -5).isActive = true
+//        titleLabel.backgroundColor = .red
+//        seeAllButton.backgroundColor = .blue
+        
+        addSubview(seeAllButton)
+        seeAllButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -5).isActive = true
+        seeAllButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        seeAllButton.topAnchor.constraint(equalTo: topAnchor, constant: 5).isActive = true
+        seeAllButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
         addSubview(collectionView)
         collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5).isActive = true

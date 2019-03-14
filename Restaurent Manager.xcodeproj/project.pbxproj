@@ -11,6 +11,8 @@
 		BD1A9F39222C9C46001A6861 /* SecondHorizontalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1A9F38222C9C46001A6861 /* SecondHorizontalCell.swift */; };
 		BD1A9F3B222C9E3D001A6861 /* SecondHorizontalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1A9F3A222C9E3D001A6861 /* SecondHorizontalController.swift */; };
 		BD1A9F3D222CA7DC001A6861 /* AllRestaurentsInCityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1A9F3C222CA7DC001A6861 /* AllRestaurentsInCityCell.swift */; };
+		BD3A3E0C2239F70C006B6A7A /* SeeAllRestaurentsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3A3E0B2239F70C006B6A7A /* SeeAllRestaurentsController.swift */; };
+		BD3A3E0E2239FD03006B6A7A /* SeeAllRestaurentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3A3E0D2239FD03006B6A7A /* SeeAllRestaurentsCell.swift */; };
 		BDE43868222B164100636662 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE43867222B164100636662 /* BaseViewController.swift */; };
 		BDE4386B222B25C100636662 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE4386A222B25C100636662 /* APIService.swift */; };
 		BDE4386E222B7AD700636662 /* RestaurentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE4386D222B7AD700636662 /* RestaurentsCell.swift */; };
@@ -32,6 +34,8 @@
 		BD1A9F38222C9C46001A6861 /* SecondHorizontalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondHorizontalCell.swift; sourceTree = "<group>"; };
 		BD1A9F3A222C9E3D001A6861 /* SecondHorizontalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondHorizontalController.swift; sourceTree = "<group>"; };
 		BD1A9F3C222CA7DC001A6861 /* AllRestaurentsInCityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRestaurentsInCityCell.swift; sourceTree = "<group>"; };
+		BD3A3E0B2239F70C006B6A7A /* SeeAllRestaurentsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeAllRestaurentsController.swift; sourceTree = "<group>"; };
+		BD3A3E0D2239FD03006B6A7A /* SeeAllRestaurentsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeAllRestaurentsCell.swift; sourceTree = "<group>"; };
 		BDE43867222B164100636662 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		BDE4386A222B25C100636662 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		BDE4386D222B7AD700636662 /* RestaurentsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurentsCell.swift; sourceTree = "<group>"; };
@@ -93,6 +97,7 @@
 				BDE43875222C51E300636662 /* NearByRestaurentsCell.swift */,
 				BD1A9F38222C9C46001A6861 /* SecondHorizontalCell.swift */,
 				BD1A9F3C222CA7DC001A6861 /* AllRestaurentsInCityCell.swift */,
+				BD3A3E0D2239FD03006B6A7A /* SeeAllRestaurentsCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -146,6 +151,7 @@
 				BDE43867222B164100636662 /* BaseViewController.swift */,
 				BDE4386F222C3CCD00636662 /* HorizontalCollectionController.swift */,
 				BD1A9F3A222C9E3D001A6861 /* SecondHorizontalController.swift */,
+				BD3A3E0B2239F70C006B6A7A /* SeeAllRestaurentsController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -275,10 +281,12 @@
 				BD1A9F3D222CA7DC001A6861 /* AllRestaurentsInCityCell.swift in Sources */,
 				BDE43876222C51E300636662 /* NearByRestaurentsCell.swift in Sources */,
 				BDE43870222C3CCD00636662 /* HorizontalCollectionController.swift in Sources */,
+				BD3A3E0C2239F70C006B6A7A /* SeeAllRestaurentsController.swift in Sources */,
 				BD1A9F3B222C9E3D001A6861 /* SecondHorizontalController.swift in Sources */,
 				BDE43874222C456600636662 /* HeaderViewCell.swift in Sources */,
 				BDE4386E222B7AD700636662 /* RestaurentsCell.swift in Sources */,
 				BDE43868222B164100636662 /* BaseViewController.swift in Sources */,
+				BD3A3E0E2239FD03006B6A7A /* SeeAllRestaurentsCell.swift in Sources */,
 				BDE4386B222B25C100636662 /* APIService.swift in Sources */,
 				BDF16477222AFF6A00A99200 /* AppDelegate.swift in Sources */,
 				BD1A9F39222C9C46001A6861 /* SecondHorizontalCell.swift in Sources */,
