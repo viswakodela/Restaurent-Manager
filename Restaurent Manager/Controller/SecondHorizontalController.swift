@@ -25,6 +25,8 @@ class SecondHorizontalController: BaseCollectionView {
     }
 }
 
+
+//MARK:- CollectionView Delegate and DataSource methods
 extension SecondHorizontalController: UICollectionViewDelegateFlowLayout {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

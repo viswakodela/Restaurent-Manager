@@ -194,6 +194,11 @@ extension BaseViewController: UICollectionViewDelegateFlowLayout {
     @objc func handleSeeAllButton(button: UIButton) {
         let seeAllRestaurents = SeeAllRestaurentsController()
 //        seeAllRestaurents.businesses = self.restaurents[button.tag]
+        
+        let bottomSheet = BottomSheetController()
+        bottomSheet.businesses = self.restaurents[button.tag]
+        bottomSheet.collectionView.reloadData()
+        
         seeAllRestaurents.currentLocation = self.currentLocation
         navigationController?.pushViewController(seeAllRestaurents, animated: true)
     }
